@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scroll Rotate Box</title>
+  <style>
+    body {
+      margin: 0;
+      height: 200vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0;
+      perspective: 1000px;
+    }
+    .box {
+      width: 300px;
+      height: 200px;
+      background-color: #4CAF50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 0.1s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box">Scroll Me</div>
+  <script>
+    const box = document.getElementById('box');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const rotation = scrollY % 360;
+      box.style.transform = `rotateY(${rotation}deg)`;
+    });
+  </script>
+</body>
+</html>
